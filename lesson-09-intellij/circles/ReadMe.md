@@ -20,8 +20,10 @@ int blue = random(255);
 stroke(red, green, blue);
 ```
 
-Voici le résultat d'une exécution:
+Voici deux résultats possibles:
 
 ![résultat](https://github.com/jedepaepe/java-4118/blob/master/lesson-09-intellij/circles/circles.png?raw=true)
+
+![résultat](https://github.com/jedepaepe/java-4118/blob/master/lesson-09-intellij/circles/circles-2.png?raw=true)
 
 Une solution est [disponible sur github](https://github.com/jedepaepe/java-4118/blob/master/lesson-09-intellij/circles/src/Circles.java).
