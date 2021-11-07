@@ -244,7 +244,7 @@ switch (step) {
 }
 ```
 
-Une solution est [disponible sur github]()
+Une solution est [disponible sur github](https://github.com/jedepaepe/java-4118/blob/master/lesson-09-intellij/exercices/src/Ex5StateSimple.java)
 ### Etat : exercice complexe ###
 Créons un programme qui affiche une fenêtre rouge.
 
