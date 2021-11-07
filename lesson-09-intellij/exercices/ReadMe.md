@@ -80,7 +80,7 @@ Nous utilisons les méthodes suivantes de PApplet:
 
 Une solution est disponible [sur github](https://github.com/jedepaepe/java-4118/blob/master/lesson-09-intellij/exercices/src/Ex2Switch.java).
 
-## Exercice for ##
+## for ##
 Réalisons une application utilisant l'instruction for. 
 Pour rappel, voici un exemple d'utilisation de for:
 
