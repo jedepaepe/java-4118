@@ -93,6 +93,22 @@ Ce code dessine 6 lignes verticales:
 
 ![résultat](https://github.com/jedepaepe/java-4118/blob/master/lesson-09-intellij/exercices/For.png?raw=true)
 
-Notre application dessine 4 carrés centrés sur la souris de 15, 30, 45, 60 pixels
-lorsque nous cliquons:
+Notre application dessine 4 carrés jaunes centrés sur la souris de 15, 30, 45, 60 pixels
+lorsque nous cliquons. Voici un exemple de résultats possibles:
 
+![résultat](https://github.com/jedepaepe/java-4118/blob/master/lesson-09-intellij/exercices/Ex3For.png?raw=true)
+
+Nous implémenterons (override) les méthodes suivantes de PApplet:
+- settings
+- setup
+- draw
+- mousePressed
+
+Nous utiliserons les méthodes suivantes de PApplet:
+- background
+- noFill
+- stroke
+- rectMode
+- square
+
+Une solution est disponible [sur github](https://github.com/jedepaepe/java-4118/blob/master/lesson-09-intellij/exercices/src/Ex3For.java).
