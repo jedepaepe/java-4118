@@ -22,4 +22,6 @@ stroke(red, green, blue);
 
 Voici le résultat d'une exécution:
 
-![résultat]()
+![résultat](https://github.com/jedepaepe/java-4118/blob/master/lesson-09-intellij/circles/circles.png?raw=true)
+
+Une solution est [disponible sur github](https://github.com/jedepaepe/java-4118/blob/master/lesson-09-intellij/circles/src/Circles.java).
