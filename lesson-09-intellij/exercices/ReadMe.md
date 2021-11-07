@@ -112,3 +112,28 @@ Nous utiliserons les méthodes suivantes de PApplet:
 - square
 
 Une solution est disponible [sur github](https://github.com/jedepaepe/java-4118/blob/master/lesson-09-intellij/exercices/src/Ex3For.java).
+
+## array ##
+Les arrays sont des listes for simples, par exemple:
+
+```java
+int[] listeDEntiers ={ 10, 3, 20, 15 };
+
+// multiplier par 2 tous les éléments
+for (int i = 0; i < listeDEntiers.length; ++i) {
+    listeDEntiers[i] = listeDEntiers[i] * 2;
+}
+
+// affichier le résultat dans la console
+for (int item : listDEntiers) {
+    System.out.println(item);
+}
+```
+
+Réalisons une application qui affiche 5 carrés centrés sur la souris dont les largeurs sont 10, 20, 35, 50
+en utilisant l'array:
+
+```java
+int[] sizes = {10, 20, 35, 52, 71};
+```
+
