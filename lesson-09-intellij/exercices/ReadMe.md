@@ -4,7 +4,6 @@ Ce projet propose quelques exercices simples avec pour objectif:
 - revoir les notions de bases:
     - if
     - switch
-    - while
     - for
     - array
     - état (variables "globales")
@@ -65,4 +64,35 @@ et dont la couleur est:
 - blanc pour tout autre caractère, color(255) (utilisation du break)
 
 Voici un exemple de résultat à l'exécution:
-[résultat attendu]
+![résultat attendu](https://github.com/jedepaepe/java-4118/blob/master/lesson-09-intellij/exercices/Ex2Switch.png?raw=true)
+
+Nous implémentons (@override) les méthodes suivantes de PApplet:
+- settings
+- setup
+- draw
+- keyReleased
+
+Nous utilisons les méthodes suivantes de PApplet:
+- size
+- background
+- fill
+- circle
+
+Une solution est disponible [sur github](https://github.com/jedepaepe/java-4118/blob/master/lesson-09-intellij/exercices/src/Ex2Switch.java).
+
+## Exercice for ##
+Réalisons une application utilisant l'instruction for. 
+Pour rappel, voici un exemple d'utilisation de for:
+
+```java
+for (int x = 10; x <= 50; ++x) {
+    line(x, 0, x, height);
+} 
+```
+Ce code dessine 6 lignes verticales:
+
+![résultat](https://github.com/jedepaepe/java-4118/blob/master/lesson-09-intellij/exercices/For.png?raw=true)
+
+Notre application dessine 4 carrés centrés sur la souris de 15, 30, 45, 60 pixels
+lorsque nous cliquons:
+
