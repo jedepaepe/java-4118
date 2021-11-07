@@ -1,7 +1,7 @@
-#Processing avec IntelliJ
+# Processing avec IntelliJ
 Code exemple pour montrer comment intégrer processing dans IntelliJ
 
-##Quick start
+## Quick start
 1. Téléchargeons le code (via le zip ou git clone).
 1. Ajoutons la librairie org.processing.core.jar
 1. Exécutons le projet.
