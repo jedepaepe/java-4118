@@ -1,6 +1,7 @@
 import processing.core.PApplet;
 
 public class Ex5StateSimple extends PApplet {
+    // étape 0=>rouge, 1=>vert, 2=>bleu
     int step = 0;
 
     @Override

@@ -179,8 +179,72 @@ public class MaClasse extends PApplet {
 ```
 
 ### Etat : exercice simple ###
-Ecrivons une application qui affiche un écran 
+Ecrivons une application qui affiche un écran rouge.
 
+Lorsque nous cliquons ou nous pressons une touche clavier,
+la couleur de fond change en vert, puis bleu, puis rouge, puis vert, puis bleu, puis rouge ...
+
+![résultat](https://github.com/jedepaepe/java-4118/blob/master/lesson-09-intellij/exercices/Ex5StateSimple.png?raw=true)
+
+Nous aurons donc besoin d'une variable d'état qui mémorise la couleur, ou plus simple l'étape:
+
+```java
+int step = 0;
+```
+
+- si step vaut 0, l'écran est rouge
+- si step vaut 1, l'écran est vert
+- si step vaut 2, l'écran est bleu
+
+La variable step doit donc être incrémenté à chaque click souris ou touche clavier:
+
+```java
+step = step + 1;
+```
+
+Mais attention step doit être compris entre 1 et 3.
+
+Nous pouvons résoudre cela par une condition:
+
+```java
+step = step + 1;
+if (step > 2) {
+    step = 0;
+}
+```
+
+ou nous pouvons utiliser l'opérateur %, ce qui est plus élégant:
+
+```java
+step = (step + 1) % 3;
+```
+
+Nous réimplémentons (@override) les méthodes de PApplet:
+- settings
+- draw
+- mousePressed
+- keyPressed
+
+Nous utilisons les méthodes :
+- size
+- background
+
+Nous pouvons aussi utiliser l'instruction switch pour gérer les différentes valeurs de step:
+
+```java
+switch (step) {
+    case 0:
+        // => rouge (à coder)
+        break;
+    case 1:
+        // => vert
+        break;
+    case 2:
+        // => bleu
+}
+```
+
+Une solution est [disponible sur github]()
 ### Etat : exercice complexe ###
 Créons un programme qui affiche une fenêtre rouge.
 
