@@ -66,7 +66,7 @@ et dont la couleur est:
 Voici un exemple de résultat à l'exécution:
 ![résultat attendu](https://github.com/jedepaepe/java-4118/blob/master/lesson-09-intellij/exercices/Ex2Switch.png?raw=true)
 
-Nous implémentons (@override) les méthodes suivantes de PApplet:
+Nous réimplémentons (@override) les méthodes suivantes de PApplet:
 - settings
 - setup
 - draw
@@ -135,5 +135,91 @@ en utilisant l'array:
 
 ```java
 int[] sizes = {10, 20, 35, 52, 71};
+```
+
+Nous "ralletissons" l'application en diminuant le frameRate à 4 "images" par seconde:
+
+```java
+frameRate(4);
+```
+
+Voici un résultat possible:
+
+![résultat](https://github.com/jedepaepe/java-4118/blob/master/lesson-09-intellij/exercices/Ex4Array.png?raw=true)
+
+Nous réimplémentons (@override) les méthodes suivantes de PApplet:
+- settings
+- setup
+- draw
+
+Nous utilions les méthodes suivantes:
+- size
+- frameRate
+- rectMode
+- background
+- noFill
+- stroke
+- square
+
+Une solution est disponible [sur github](https://github.com/jedepaepe/java-4118/blob/master/lesson-09-intellij/exercices/src/Ex4Array.java).
+
+## Etat ##
+L'état contient l'information nécessaire à l'application pour fonctionner.
+
+Lorsqu'on travaille avec PApplet, nous placerons les variables d'état juste après la déclaration de la classe,
+par exemple:
+
+```java
+import processing.core.PApplet;
+
+public class MaClasse extends PApplet {
+    int stateVar1 = 10;
+    String stateVar2 = "hello";
+}
+```
+
+Créons un programme qui 
+
+1. dessine un cercle centré sur la souris lorsque l'utilisateur clique;
+1. redessine tous les cercles en
+   - rouge lorsque l'utilisateur tape r ou R
+   - vert lorsque l'utilisateur tape v ou V
+   - bleu lorsque l'utilisateur tape b ou B
+   - blanc pour tout autre caratère
+  
+Pour gérer les couleurs, nous pouvons nous inspirer de l'exercice "switch".
+
+Pour mémoriser la position des cercles, nous aurons besoin de trois variables d'état:
+```java
+// nombre maximum de cercles
+final int maxCircle = 10;
+
+// nombre de cercles
+int nrCircle = 0;
+
+// index du dernier cercle dessiné
+int index = 0;
+
+// positions x des cercles
+int[] positionXs = new int[maxCircle];
+
+// positions y des cercles
+int[] positionYs = new int[maxCircle];
+```
+
+Notons que nos listes sont limitées à 10 éléments.
+Il faudra gérer le dépassement de 10.
+
+Une solution consiste à limiter les index à [0, 10[,
+ce que nous pouvons faire avec un if:
+
+```java
+if (index >= maxCircle) index = 0;
+```
+
+où plus élégant:
+
+```java
+index = index % maxCircle;
 ```
 
