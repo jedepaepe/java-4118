@@ -178,7 +178,16 @@ public class MaClasse extends PApplet {
 }
 ```
 
-Créons un programme qui 
+### Etat : exercice simple ###
+Ecrivons une application qui affiche un écran 
+
+### Etat : exercice complexe ###
+Créons un programme qui affiche une fenêtre rouge.
+
+Lorsque l'utilisateur clique ou tape un touche clavier, 
+la fenêtre devient successivement verte, bleue, rouge, verte, bleue, rouge, ... 
+
+
 
 1. dessine un cercle centré sur la souris lorsque l'utilisateur clique;
 1. redessine tous les cercles en
@@ -223,3 +232,19 @@ où plus élégant:
 index = index % maxCircle;
 ```
 
+Nous obteons ce type de résultats:
+
+![résultat](https://github.com/jedepaepe/java-4118/blob/master/lesson-09-intellij/exercices/Ex5State.png?raw=true)
+
+Nous réimplémentons (@override) les méthodes suivantes de PApplet:
+- settings
+- draw
+- mousePressed
+
+Nous utilisons les méthodes suivantes:
+- size
+- background
+- fill
+- circle
+
+Une solution est disponible [sur github](https://github.com/jedepaepe/java-4118/blob/master/lesson-09-intellij/exercices/src/Ex6State.java).

@@ -1,6 +1,6 @@
 import processing.core.PApplet;
 
-public class Ex5State extends PApplet {
+public class Ex6State extends PApplet {
     // nombre maximum de cercles
     final int circleMax = 10;
     // index du prochain cercle à dessiner
@@ -15,11 +15,6 @@ public class Ex5State extends PApplet {
     @Override
     public void settings() {
         size(300, 300);
-    }
-
-    @Override
-    public void setup() {
-        super.setup();
     }
 
     @Override
@@ -58,6 +53,6 @@ public class Ex5State extends PApplet {
     }
 
     public static void main(String[] args) {
-        PApplet.runSketch(new String[]{ "Ex5State" }, new Ex5State());
+        PApplet.runSketch(new String[]{ "Ex5State" }, new Ex6State());
     }
 }
