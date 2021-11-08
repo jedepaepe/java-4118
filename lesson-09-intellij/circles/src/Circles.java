@@ -1,4 +1,4 @@
-    import processing.core.PApplet;
+import processing.core.PApplet;
 
 public class Circles extends PApplet {
     boolean started = false;
