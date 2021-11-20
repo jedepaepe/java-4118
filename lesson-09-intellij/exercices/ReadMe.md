@@ -342,3 +342,54 @@ et nous utilisons les méthodes:
 - circle
 
 Une solution est disponible [sur github](https://github.com/jedepaepe/java-4118/blob/master/lesson-09-intellij/exercices/src/Ex6State.java).
+
+## Cercles inscrits ##
+
+Codons une application qui dessine un cercle de 20 pixels de diamètre centré sur la souris lorsque l'utilisateur clique.
+
+Ensuite, l'application dessine un second cercle de 30 pixels centré sur le même point.
+
+Ensuite l'application dessine un troisième cercle de 40 pixels ...
+
+Ensuite un quatrième cercle de 50 pixels ...
+
+...
+
+à raison d'environ 3 cercles par seconde.
+
+Si l'utilisateur reclique, le processus recommence.
+
+Si l'utilisateur tape le caractère 'r', tous les cercles sont redessinés en rouge.
+
+Si l'utilisateur tape le caractère 'v', en vert.
+
+'b' en bleu.
+
+'j' en jaune.
+
+'t' en turquoïse.
+
+'m' en mauve.
+
+'w' en blanc.
+
+La couleur initiale est le blanc.
+
+Fenêtre au démarrage de l'écran:
+
+![situation initiale](Ex7Circles-0.png)
+
+
+L'utilisateur a cliqué dans la fenêtre et trois cercles sont déjà dessiné (la capture d'écran est effectuée environ 1 seconde après le click);
+
+![premier click, 3 cercles](Ex7Circles-1-click-3-circles.png)
+
+Quelques secondes plus tard:
+![quelques secondes](Ex7Circles-2-click-n-circles.png)
+
+Quelques secondes plus tard, l'utilisateur a cliqué une deuxième fois:
+![deuxième click](Ex7Circles-3-click-2-n-circles.png)
+
+Quelques secondes plus tard, l'utilisateur a tapé le caractère 'r':
+![caractère r](Ex7Circles-4-char-r.png)
+

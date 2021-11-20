@@ -1,8 +1,8 @@
 import processing.core.PApplet;
 
 public class Ex7Circles extends PApplet {
-    final int startRadius = 20;
-    final int deltaRadius = 10;
+    final int START_RADIUS = 20;
+    final int DELTA_RADIUS = 10;
     int[] positionXs = new int[1000];
     int[] positionYx = new int[1000];
     int[] diameters = new int[1000];
@@ -11,6 +11,11 @@ public class Ex7Circles extends PApplet {
     @Override
     public void settings() {
         size(600, 600);
+    }
+
+    @Override
+    public void setup() {
+        stroke(255);
     }
 
     @Override
@@ -23,7 +28,7 @@ public class Ex7Circles extends PApplet {
         if (index > 0 && frameCount % 20 == 0) {
             positionXs[index] = positionXs[index - 1];
             positionYx[index] = positionYx[index - 1];
-            diameters[index] = diameters[index - 1] + deltaRadius;
+            diameters[index] = diameters[index - 1] + DELTA_RADIUS;
             ++index;
         }
     }
@@ -32,7 +37,7 @@ public class Ex7Circles extends PApplet {
     public void mousePressed() {
         positionXs[index] = mouseX;
         positionYx[index] = mouseY;
-        diameters[index] = startRadius;
+        diameters[index] = START_RADIUS;
         ++index;
     }
 
