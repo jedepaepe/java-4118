@@ -393,3 +393,73 @@ Quelques secondes plus tard, l'utilisateur a cliqué une deuxième fois:
 Quelques secondes plus tard, l'utilisateur a tapé le caractère 'r':
 ![caractère r](Ex7Circles-4-char-r.png)
 
+## révision ##
+
+Cet exercice a pour but de revoir l'ensemble de compétences.
+
+Il est réalisé en étape, chaque étape correspondant à une compétence.
+
+### Etape 1 :  6 carrés sur la diagonale ###
+
+Codons un programme qui dessine 6 carrés sur la diagonale à l'aide d'une boucle for.
+
+![6 carrés sur la diagonale](Ex8Revision-step-1-squares.png)
+
+Les carrés font 100x100 pixels.
+
+
+### Etape 2 : numérotons les carrés ###
+
+Nous obtenons
+
+![numérotons les carrés](Ex8Revision-step-2-numéros.png)
+
+Les caractères font 20 pixels. 
+Ils sont plus ou moins centrés.
+Ils sont de couleur jaune (255, 255, 0)
+
+
+### Etape 3 : différentes couleurs ###
+
+Colorons les cercles et les textes en jaune et turquoie à l'aide de l'instructif if.
+
+![couleurs](Ex8Revision-step-3-colors.png)
+
+Nous utilisons le jaune et le turquoise (0, 255, 0).
+
+### Etape 4 : souris ###
+
+Dessinons un cercle à chaque click souris.
+
+![mouse](Ex8Revision-step-4-mouse.png)
+
+Les cercles sont mauves (255, 0, 255) et ont un diamètre de 30 pixels.
+
+### Etape 5 : taille ###
+
+Codons les fonctionnalités suivantes:
+
+- lorsque l'utilisateur tape le caractère '+', tous les cercles grandissent de 10 pixels,
+- lorsque l'utilisateur tape le caractère '-', tous les cercles grandissent de 10 pixels,
+- la taille maximum des cercles est de 100 pixels,
+- la taille minimum des cercles est de 10 pixels.
+
+![taille](Ex8Revision-step-5-size.png)
+
+Pour implémenter cette fonction, nous devons utiliser la notion de tableau (array) et de variables d'états.
+
+### Etape 7 : déplacer ###
+
+Codons la fonctionnalité suivante:
+
+- lorsque l'utilisateur utilise les caractères flèches, les cercles sont déplacés de 5 pixels dans la direction indiquée par la flèche (démo sur demande).
+
+Nous utiliserons ici les [keyCode  de processing](https://processing.org/reference/keyCode.html).
+
+### Etape 8 : entrer sortir ###
+
+Maintenant, les cercles peuvent sortir de la fenêtre.
+
+Modifions ce comportement de sorte que lorsqu'un cercle sort de la fenêtre, il entre par le côté opposé (démo sur demande).
+
+Nous utilisons l'opérateur "reste" (%) pour résoudre ce problème.
