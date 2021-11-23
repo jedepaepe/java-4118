@@ -425,7 +425,7 @@ Colorons les cercles et les textes en jaune et turquoie à l'aide de l'instructi
 
 ![couleurs](Ex8Revision-step-3-colors.png)
 
-Nous utilisons le jaune et le turquoise (0, 255, 0).
+Nous utilisons le jaune et le turquoise (0, 255, 0) pour les carrés et les textes.
 
 ### Etape 4 : souris ###
 
