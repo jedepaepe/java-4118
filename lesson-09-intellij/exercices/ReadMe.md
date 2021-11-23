@@ -412,7 +412,7 @@ Les carrés font 100x100 pixels.
 
 Nous obtenons
 
-![numérotons les carrés](Ex8Revision-step-2-numéros.png)
+![numérotons les carrés](Ex8Revision-step-2-numeros.png)
 
 Les caractères font 20 pixels. 
 Ils sont plus ou moins centrés.
