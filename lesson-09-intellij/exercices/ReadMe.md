@@ -406,6 +406,7 @@ Codons un programme qui dessine 6 carrés sur la diagonale à l'aide d'une boucl
 ![6 carrés sur la diagonale](Ex8Revision-step-1-squares.png)
 
 Les carrés font 100x100 pixels.
+Ils sont de couleur jaune (255, 255, 0).
 
 
 ### Etape 2 : numérotons les carrés ###
@@ -416,7 +417,6 @@ Nous obtenons
 
 Les caractères font 20 pixels. 
 Ils sont plus ou moins centrés.
-Ils sont de couleur jaune (255, 255, 0)
 
 
 ### Etape 3 : différentes couleurs ###
