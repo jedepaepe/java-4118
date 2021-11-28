@@ -1,7 +1,7 @@
 import processing.core.PApplet;
 
 public class SnakeApp extends PApplet {
-    int numberOfCells = 6;
+    int numberOfCells = 3;
     int size = numberOfCells * 30;
     final int IS_EAT = -1;
     int foodIndexX = IS_EAT;
@@ -106,8 +106,17 @@ public class SnakeApp extends PApplet {
     }
 
     private void randomFood() {
-        foodIndexX = (int) random(numberOfCells);
-        foodIndexY = (int) random(numberOfCells);
+        do {
+            foodIndexX = (int) random(numberOfCells);
+            foodIndexY = (int) random(numberOfCells);
+        } while (isInSnake(foodIndexX, foodIndexY));
+    }
+
+    private boolean isInSnake(int indexX, int indexY) {
+        for (int i = 0; i < snakeX.length; ++i) {
+            if (indexX == snakeX[i] && indexY == snakeY[i]) return true;
+        }
+        return false;
     }
 
     private void drawCell(int indexX, int indexY, int color) {
