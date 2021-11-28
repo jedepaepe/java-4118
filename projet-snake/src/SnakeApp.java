@@ -1,13 +1,13 @@
 import processing.core.PApplet;
 
 public class SnakeApp extends PApplet {
-    int size = 300;
-    int numberOfCells = 10;
+    int numberOfCells = 6;
+    int size = numberOfCells * 30;
     final int IS_EAT = -1;
     int foodIndexX = IS_EAT;
     int foodIndexY = IS_EAT;
-    int snakeX[] = new int[numberOfCells * numberOfCells];
-    int snakeY[] = new int[numberOfCells * numberOfCells];
+    int snakeX[];
+    int snakeY[];
 
     @Override
     public void settings() {
@@ -17,6 +17,7 @@ public class SnakeApp extends PApplet {
     @Override
     public void setup() {
         surface.setTitle("Snake");
+        initSnake();
     }
 
     @Override
@@ -31,35 +32,61 @@ public class SnakeApp extends PApplet {
     public void keyPressed() {
         switch (keyCode) {
             case UP:
-                moveSnake(snakeX[0], --snakeY[0]);
+                moveSnake(snakeX[0], snakeY[0] - 1);
                 break;
             case RIGHT:
-                moveSnake(++snakeX[0], snakeY[0]);
+                moveSnake(snakeX[0] + 1, snakeY[0]);
                 break;
             case DOWN:
-                moveSnake(snakeX[0], ++snakeY[0]);
+                moveSnake(snakeX[0], snakeY[0] + 1);
                 break;
             case LEFT:
-                moveSnake(--snakeX[0], snakeY[0]);
+                moveSnake(snakeX[0] - 1, snakeY[0]);
         }
-        eatFood();
     }
 
     private void initSnake() {
+        snakeX = new int[1];
+        snakeY = new int[1];
         snakeX[0] = (int) random(numberOfCells);
         snakeY[0] = (int) random(numberOfCells);
     }
 
     private void moveSnake(int indexX, int indexY) {
+        int len = snakeX.length;
+        if (eatFood(indexX, indexY)) {
+            int[] newSnakeX = new int[len + 1];
+            int[] newSnakeY = new int[len + 1];
+            copyArray(snakeX, newSnakeX);
+            copyArray(snakeY, newSnakeY);
+            snakeX = newSnakeX;
+            snakeY = newSnakeY;
+            snakeX[len] = snakeX[len - 1];
+            snakeY[len] = snakeY[len - 1];
+            System.out.println("queue " + snakeX[len] + " " + snakeY[len]);
+        }
+        for (int i = len - 1; i > 0; --i) {
+            snakeX[i] = snakeX[i - 1];
+            snakeY[i] = snakeY[i - 1];
+        }
         snakeX[0] = replaceInBoard(indexX);
         snakeY[0] = replaceInBoard(indexY);
+        for (int i = 0; i < snakeX.length; ++i) println("snake " + snakeX[i] + " " + snakeY[i]);
     }
 
-    private void eatFood() {
-        if (foodIndexX == snakeX[0] && foodIndexY == snakeY[0]) {
+    private void copyArray(int[] source, int[] destination) {
+        for (int i = 0; i < source.length && i < destination.length; ++i) {
+            destination[i] = source[i];
+        }
+    }
+
+    private boolean eatFood(int indexX, int indexY) {
+        if (foodIndexX == indexX && foodIndexY == indexY) {
             foodIndexX = IS_EAT;
             foodIndexY = IS_EAT;
+            return true;
         }
+        return false;
     }
 
     private void drawBoard() {
@@ -73,7 +100,7 @@ public class SnakeApp extends PApplet {
     private void drawFood() {
         if (-1 == foodIndexX) {
             randomFood();
-            System.out.println(foodIndexX + " " + foodIndexY);
+            System.out.println("food " + foodIndexX + " " + foodIndexY);
         }
         drawCell(foodIndexX, foodIndexY, color(0, 255, 0));
     }
@@ -94,7 +121,9 @@ public class SnakeApp extends PApplet {
     }
 
     private void drawSnake() {
-        drawCell(snakeX[0], snakeY[0], color(255, 255, 0));
+        for (int index = 0; index < snakeX.length; ++index) {
+            drawCell(snakeX[index], snakeY[index], color(255, 255, 0));
+        }
     }
 
     private int replaceInBoard(int index) {
