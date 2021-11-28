@@ -8,6 +8,7 @@ public class Ex8Revision extends PApplet {
     final int CIRCLE_SIZE_DELTA = 10;
     final int CIRCLE_MOVE = 5;
     PCircles pCircles = new PCircles();
+    PSquares pSquares = new PSquares(SQUARE_COUNT, SQUARE_SIZE);
 
     @Override
     public void settings() {
@@ -23,20 +24,8 @@ public class Ex8Revision extends PApplet {
     @Override
     public void draw() {
         background(0);
-        drawSquares();
+        pSquares.draw();
         pCircles.draw();
-    }
-
-    private void drawSquares() {
-        for (int i = 0; i < SQUARE_COUNT; ++i) {
-            int p = pixelsFromIndex(i);
-            if (i % 2 == 0) fill(255, 255, 0);
-            else fill(0, 255, 255);
-            square(p, p, SQUARE_SIZE);
-            if (i % 2 == 0) fill(0, 255, 255);
-            else fill(255, 255, 0);
-            text("carré " + (i + 1), p + SQUARE_SIZE / 2, p + SQUARE_SIZE /2);
-        }
     }
 
     private int pixelsFromIndex(int index) {
@@ -129,6 +118,28 @@ public class Ex8Revision extends PApplet {
 
         public void mouseClicked() {
             addCircle(mouseX, mouseY);
+        }
+    }
+
+    class PSquares {
+        int squareCount;
+        int squareSize;
+
+        public PSquares(int squareCount, int squareSize) {
+            this.squareCount = squareCount;
+            this.squareSize = squareSize;
+        }
+
+        public void draw() {
+            for (int i = 0; i < squareCount; ++i) {
+                int p = pixelsFromIndex(i);
+                if (i % 2 == 0) fill(255, 255, 0);
+                else fill(0, 255, 255);
+                square(p, p, squareSize);
+                if (i % 2 == 0) fill(0, 255, 255);
+                else fill(255, 255, 0);
+                text("carré " + (i + 1), p + squareSize / 2, p + squareSize /2);
+            }
         }
     }
 }
