@@ -7,7 +7,7 @@ public class Ex8Revision extends PApplet {
     final int SQUARE_SIZE = 100;
     final int CIRCLE_SIZE_DELTA = 10;
     final int CIRCLE_MOVE = 5;
-    Circles circles = new Circles();
+    PCircles pcircles = new PCircles();
 
     @Override
     public void settings() {
@@ -24,7 +24,7 @@ public class Ex8Revision extends PApplet {
     public void draw() {
         background(0);
         drawSquares();
-        drawCircles();
+        pcircles.draw();
     }
 
     private void drawSquares() {
@@ -43,40 +43,18 @@ public class Ex8Revision extends PApplet {
         return index * SQUARE_SIZE;
     }
 
-    private void drawCircles() {
-        fill(255, 0, 255);
-        for (Circle c : circles.circles) {
-            circle(getInWindowPixels(c.x, width), getInWindowPixels(c.y, height), circles.diameter);
-        }
-    }
-
     @Override
     public void mouseClicked() {
-        addCircle();
+        pcircles.mouseClicked();
     }
 
     private void addCircle() {
-        circles.addCircle(mouseX, mouseY);
+        pcircles.addCircle(mouseX, mouseY);
     }
 
     @Override
     public void keyPressed() {
-        if ('+' == key) circles.changeDiameter(CIRCLE_SIZE_DELTA);
-        if ('-' == key) circles.changeDiameter(-CIRCLE_SIZE_DELTA);
-
-        switch (keyCode) {
-            case UP:
-                circles.move(0, -CIRCLE_MOVE);
-                break;
-            case RIGHT:
-                circles.move(CIRCLE_MOVE, 0);
-                break;
-            case DOWN:
-                circles.move(0, CIRCLE_MOVE);
-                break;
-            case LEFT:
-                circles.move(- CIRCLE_MOVE, 0);
-        }
+        pcircles.keyPressed();
     }
 
     private int getInWindowPixels(int position, int size) {
@@ -119,6 +97,38 @@ public class Ex8Revision extends PApplet {
 
         public void move(int deltaX, int deltaY) {
             for (Circle c : circles) c.move(deltaX, deltaY);
+        }
+    }
+
+    class PCircles extends Circles {
+        public void draw() {
+            fill(255, 0, 255);
+            for (Circle c : circles) {
+                circle(getInWindowPixels(c.x, width), getInWindowPixels(c.y, height), pcircles.diameter);
+            }
+        }
+
+        public void keyPressed() {
+            if ('+' == key) changeDiameter(CIRCLE_SIZE_DELTA);
+            if ('-' == key) changeDiameter(-CIRCLE_SIZE_DELTA);
+
+            switch (keyCode) {
+                case UP:
+                    move(0, -CIRCLE_MOVE);
+                    break;
+                case RIGHT:
+                    move(CIRCLE_MOVE, 0);
+                    break;
+                case DOWN:
+                    move(0, CIRCLE_MOVE);
+                    break;
+                case LEFT:
+                    move(- CIRCLE_MOVE, 0);
+            }
+        }
+
+        public void mouseClicked() {
+            addCircle(mouseX, mouseY);
         }
     }
 }
