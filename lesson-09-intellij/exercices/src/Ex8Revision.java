@@ -7,8 +7,7 @@ public class Ex8Revision extends PApplet {
     final int SQUARE_SIZE = 100;
     final int CIRCLE_SIZE_DELTA = 10;
     final int CIRCLE_MOVE = 5;
-    int diameter = 30;
-    ArrayList<Circle> circles = new ArrayList<>();
+    Circles circles = new Circles();
 
     @Override
     public void settings() {
@@ -46,7 +45,9 @@ public class Ex8Revision extends PApplet {
 
     private void drawCircles() {
         fill(255, 0, 255);
-        for (Circle c : circles) circle(getInWindowPixels(c.x, width), getInWindowPixels(c.y, height), diameter);
+        for (Circle c : circles.circles) {
+            circle(getInWindowPixels(c.x, width), getInWindowPixels(c.y, height), circles.diameter);
+        }
     }
 
     @Override
@@ -55,32 +56,26 @@ public class Ex8Revision extends PApplet {
     }
 
     private void addCircle() {
-        circles.add(new Circle(mouseX, mouseY));
+        circles.addCircle(mouseX, mouseY);
     }
 
     @Override
     public void keyPressed() {
-        if ('+' == key && diameter < 100) diameter += CIRCLE_SIZE_DELTA;
-        if ('-' == key && diameter > 10) diameter -= CIRCLE_SIZE_DELTA;
+        if ('+' == key) circles.changeDiameter(CIRCLE_SIZE_DELTA);
+        if ('-' == key) circles.changeDiameter(-CIRCLE_SIZE_DELTA);
 
         switch (keyCode) {
             case UP:
-                moveCircles(0, -CIRCLE_MOVE);
+                circles.move(0, -CIRCLE_MOVE);
                 break;
             case RIGHT:
-                moveCircles(CIRCLE_MOVE, 0);
+                circles.move(CIRCLE_MOVE, 0);
                 break;
             case DOWN:
-                moveCircles(0, CIRCLE_MOVE);
+                circles.move(0, CIRCLE_MOVE);
                 break;
             case LEFT:
-                moveCircles(- CIRCLE_MOVE, 0);
-        }
-    }
-
-    private void moveCircles(int deltaX, int deltaY) {
-        for (Circle c : circles) {
-            c.move(deltaX, deltaY);
+                circles.move(- CIRCLE_MOVE, 0);
         }
     }
 
@@ -98,9 +93,6 @@ public class Ex8Revision extends PApplet {
         int x;
         int y;
 
-        public Circle() {
-        }
-
         public Circle(int x, int y) {
             this.x = x;
             this.y = y;
@@ -109,6 +101,24 @@ public class Ex8Revision extends PApplet {
         public void move(int deltaX, int deltaY) {
             x += deltaX;
             y += deltaY;
+        }
+    }
+
+    class Circles {
+        ArrayList<Circle> circles = new ArrayList<>();
+        int diameter = 30;
+
+        public void addCircle(int x, int y) {
+            circles.add(new Circle(x, y));
+        }
+
+        public void changeDiameter(int delta) {
+            int newDiameter = diameter + delta;
+            if (10 < newDiameter && newDiameter < 100) diameter = newDiameter;
+        }
+
+        public void move(int deltaX, int deltaY) {
+            for (Circle c : circles) c.move(deltaX, deltaY);
         }
     }
 }
