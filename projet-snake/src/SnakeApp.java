@@ -1,7 +1,7 @@
 import processing.core.PApplet;
 
 public class SnakeApp extends PApplet {
-    int numberOfCells = 3;
+    int numberOfCells = 7;
     int size = numberOfCells * 30;
     final int IS_EAT = -1;
     int foodIndexX = IS_EAT;
@@ -53,6 +53,9 @@ public class SnakeApp extends PApplet {
     }
 
     private void moveSnake(int indexX, int indexY) {
+        indexX = replaceInBoard(indexX);
+        indexY = replaceInBoard(indexY);
+        if (isInSnake(indexX, indexY)) return;
         int len = snakeX.length;
         if (eatFood(indexX, indexY)) {
             int[] newSnakeX = new int[len + 1];
@@ -69,8 +72,8 @@ public class SnakeApp extends PApplet {
             snakeX[i] = snakeX[i - 1];
             snakeY[i] = snakeY[i - 1];
         }
-        snakeX[0] = replaceInBoard(indexX);
-        snakeY[0] = replaceInBoard(indexY);
+        snakeX[0] = indexX;
+        snakeY[0] = indexY;
         for (int i = 0; i < snakeX.length; ++i) println("snake " + snakeX[i] + " " + snakeY[i]);
     }
 
