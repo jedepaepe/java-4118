@@ -6,8 +6,8 @@ public class SnakeApp extends PApplet {
     final int IS_EAT = -1;
     int foodIndexX = IS_EAT;
     int foodIndexY = IS_EAT;
-    int snakeX = (int) random(numberOfCells);
-    int snakeY = (int) random(numberOfCells);
+    int snakeX[] = new int[numberOfCells * numberOfCells];
+    int snakeY[] = new int[numberOfCells * numberOfCells];
 
     @Override
     public void settings() {
@@ -31,27 +31,32 @@ public class SnakeApp extends PApplet {
     public void keyPressed() {
         switch (keyCode) {
             case UP:
-                moveSnake(snakeX, --snakeY);
+                moveSnake(snakeX[0], --snakeY[0]);
                 break;
             case RIGHT:
-                moveSnake(++snakeX, snakeY);
+                moveSnake(++snakeX[0], snakeY[0]);
                 break;
             case DOWN:
-                moveSnake(snakeX, ++snakeY);
+                moveSnake(snakeX[0], ++snakeY[0]);
                 break;
             case LEFT:
-                moveSnake(--snakeX, snakeY);
+                moveSnake(--snakeX[0], snakeY[0]);
         }
         eatFood();
     }
 
+    private void initSnake() {
+        snakeX[0] = (int) random(numberOfCells);
+        snakeY[0] = (int) random(numberOfCells);
+    }
+
     private void moveSnake(int indexX, int indexY) {
-        snakeX = replaceInBoard(indexX);
-        snakeY = replaceInBoard(indexY);
+        snakeX[0] = replaceInBoard(indexX);
+        snakeY[0] = replaceInBoard(indexY);
     }
 
     private void eatFood() {
-        if (foodIndexX == snakeX && foodIndexY == snakeY) {
+        if (foodIndexX == snakeX[0] && foodIndexY == snakeY[0]) {
             foodIndexX = IS_EAT;
             foodIndexY = IS_EAT;
         }
@@ -89,7 +94,7 @@ public class SnakeApp extends PApplet {
     }
 
     private void drawSnake() {
-        drawCell(snakeX, snakeY, color(255, 255, 0));
+        drawCell(snakeX[0], snakeY[0], color(255, 255, 0));
     }
 
     private int replaceInBoard(int index) {
