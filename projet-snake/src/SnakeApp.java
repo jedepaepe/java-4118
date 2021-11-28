@@ -3,8 +3,9 @@ import processing.core.PApplet;
 public class SnakeApp extends PApplet {
     int size = 300;
     int numberOfCells = 10;
-    int foodIndexX = -1;
-    int foodIndexY = -1;
+    final int IS_EAT = -1;
+    int foodIndexX = IS_EAT;
+    int foodIndexY = IS_EAT;
     int snakeX = (int) random(numberOfCells);
     int snakeY = (int) random(numberOfCells);
 
@@ -30,16 +31,29 @@ public class SnakeApp extends PApplet {
     public void keyPressed() {
         switch (keyCode) {
             case UP:
-                snakeY = replaceInBoard(--snakeY);
+                moveSnake(snakeX, --snakeY);
                 break;
             case RIGHT:
-                snakeX = replaceInBoard(++snakeX);
+                moveSnake(++snakeX, snakeY);
                 break;
             case DOWN:
-                snakeY = replaceInBoard(++snakeY);
+                moveSnake(snakeX, ++snakeY);
                 break;
             case LEFT:
-                snakeX = replaceInBoard(--snakeX);
+                moveSnake(--snakeX, snakeY);
+        }
+        eatFood();
+    }
+
+    private void moveSnake(int indexX, int indexY) {
+        snakeX = replaceInBoard(indexX);
+        snakeY = replaceInBoard(indexY);
+    }
+
+    private void eatFood() {
+        if (foodIndexX == snakeX && foodIndexY == snakeY) {
+            foodIndexX = IS_EAT;
+            foodIndexY = IS_EAT;
         }
     }
 
