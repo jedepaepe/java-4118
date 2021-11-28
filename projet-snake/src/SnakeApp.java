@@ -5,6 +5,8 @@ public class SnakeApp extends PApplet {
     int numberOfCells = 10;
     int foodIndexX = -1;
     int foodIndexY = -1;
+    int snakeX = (int) random(numberOfCells);
+    int snakeY = (int) random(numberOfCells);
 
     @Override
     public void settings() {
@@ -21,6 +23,7 @@ public class SnakeApp extends PApplet {
         background(0);
         drawBoard();
         drawFood();
+        drawSnake();
     }
 
     private void drawBoard() {
@@ -52,6 +55,10 @@ public class SnakeApp extends PApplet {
         float deltaY = height / numberOfCells;
         float y = indexY * deltaY;
         rect(x, y, deltaX, deltaY);
+    }
+
+    private void drawSnake() {
+        drawCell(snakeX, snakeY, color(255, 255, 0));
     }
 
     public static void main(String[] args) {
