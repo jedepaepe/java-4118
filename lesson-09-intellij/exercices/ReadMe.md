@@ -393,6 +393,8 @@ Quelques secondes plus tard, l'utilisateur a cliqué une deuxième fois:
 Quelques secondes plus tard, l'utilisateur a tapé le caractère 'r':
 ![caractère r](Ex7Circles-4-char-r.png)
 
+Une solution est [disponible sur github](https://github.com/jedepaepe/java-4118/blob/master/lesson-09-intellij/exercices/src/Ex7Circles.java)
+
 ## révision ##
 
 Cet exercice a pour but de revoir l'ensemble de compétences.
@@ -463,3 +465,5 @@ Maintenant, les cercles peuvent sortir de la fenêtre.
 Modifions ce comportement de sorte que lorsqu'un cercle sort de la fenêtre, il entre par le côté opposé (démo sur demande).
 
 Nous utilisons l'opérateur "reste" (%) pour résoudre ce problème.
+
+Une solution est [disponible sur github](https://github.com/jedepaepe/java-4118/blob/master/lesson-09-intellij/exercices/src/Ex8Revision.java)
