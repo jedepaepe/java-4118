@@ -7,7 +7,7 @@ public class Ex8Revision extends PApplet {
     final int SQUARE_SIZE = 100;
     final int CIRCLE_SIZE_DELTA = 10;
     final int CIRCLE_MOVE = 5;
-    PCircles pcircles = new PCircles();
+    PCircles pCircles = new PCircles();
 
     @Override
     public void settings() {
@@ -24,7 +24,7 @@ public class Ex8Revision extends PApplet {
     public void draw() {
         background(0);
         drawSquares();
-        pcircles.draw();
+        pCircles.draw();
     }
 
     private void drawSquares() {
@@ -45,16 +45,16 @@ public class Ex8Revision extends PApplet {
 
     @Override
     public void mouseClicked() {
-        pcircles.mouseClicked();
+        pCircles.mouseClicked();
     }
 
     private void addCircle() {
-        pcircles.addCircle(mouseX, mouseY);
+        pCircles.addCircle(mouseX, mouseY);
     }
 
     @Override
     public void keyPressed() {
-        pcircles.keyPressed();
+        pCircles.keyPressed();
     }
 
     private int getInWindowPixels(int position, int size) {
@@ -104,7 +104,7 @@ public class Ex8Revision extends PApplet {
         public void draw() {
             fill(255, 0, 255);
             for (Circle c : circles) {
-                circle(getInWindowPixels(c.x, width), getInWindowPixels(c.y, height), pcircles.diameter);
+                circle(getInWindowPixels(c.x, width), getInWindowPixels(c.y, height), pCircles.diameter);
             }
         }
 
