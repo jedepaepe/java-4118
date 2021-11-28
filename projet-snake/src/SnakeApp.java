@@ -1,8 +1,10 @@
 import processing.core.PApplet;
 
 public class SnakeApp extends PApplet {
-    int size = 800;
+    int size = 300;
     int numberOfCells = 10;
+    int foodIndexX = -1;
+    int foodIndexY = -1;
 
     @Override
     public void settings() {
@@ -18,6 +20,7 @@ public class SnakeApp extends PApplet {
     public void draw() {
         background(0);
         drawBoard();
+        drawFood();
     }
 
     private void drawBoard() {
@@ -26,6 +29,29 @@ public class SnakeApp extends PApplet {
             line(xy, 0, xy, height);
             line(0, xy, width, xy);
         }
+    }
+
+    private void drawFood() {
+        if (-1 == foodIndexX) {
+            randomFood();
+            System.out.println(foodIndexX + " " + foodIndexY);
+        }
+        drawCell(foodIndexX, foodIndexY, color(0, 255, 0));
+    }
+
+    private void randomFood() {
+        foodIndexX = (int) random(numberOfCells);
+        foodIndexY = (int) random(numberOfCells);
+    }
+
+    private void drawCell(int indexX, int indexY, int color) {
+        fill(color);
+        stroke(255);
+        float deltaX = width / numberOfCells;
+        float x = indexX * deltaX;
+        float deltaY = height / numberOfCells;
+        float y = indexY * deltaY;
+        rect(x, y, deltaX, deltaY);
     }
 
     public static void main(String[] args) {
