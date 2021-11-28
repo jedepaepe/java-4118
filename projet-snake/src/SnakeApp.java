@@ -26,6 +26,23 @@ public class SnakeApp extends PApplet {
         drawSnake();
     }
 
+    @Override
+    public void keyPressed() {
+        switch (keyCode) {
+            case UP:
+                snakeY = replaceInBoard(--snakeY);
+                break;
+            case RIGHT:
+                snakeX = replaceInBoard(++snakeX);
+                break;
+            case DOWN:
+                snakeY = replaceInBoard(++snakeY);
+                break;
+            case LEFT:
+                snakeX = replaceInBoard(--snakeX);
+        }
+    }
+
     private void drawBoard() {
         stroke(255);
         for (int xy = 0; xy < size; xy += size / numberOfCells) {
@@ -59,6 +76,12 @@ public class SnakeApp extends PApplet {
 
     private void drawSnake() {
         drawCell(snakeX, snakeY, color(255, 255, 0));
+    }
+
+    private int replaceInBoard(int index) {
+        if (index < 0) return index + numberOfCells;
+        if (index >= numberOfCells) return index - numberOfCells;
+        return index;
     }
 
     public static void main(String[] args) {
