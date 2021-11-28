@@ -7,7 +7,7 @@ public class Ex8Revision extends PApplet {
     final int SQUARE_SIZE = 100;
     final int CIRCLE_SIZE_DELTA = 10;
     final int CIRCLE_MOVE = 5;
-    PCircles pCircles = new PCircles();
+    PCircles pCircles = new PCircles(30, CIRCLE_SIZE_DELTA, CIRCLE_MOVE);
     PSquares pSquares = new PSquares(SQUARE_COUNT, SQUARE_SIZE);
 
     @Override
@@ -73,7 +73,11 @@ public class Ex8Revision extends PApplet {
 
     class Circles {
         ArrayList<Circle> circles = new ArrayList<>();
-        int diameter = 30;
+        int diameter;
+
+        public Circles(int diameter) {
+            this.diameter = diameter;
+        }
 
         public void addCircle(int x, int y) {
             circles.add(new Circle(x, y));
@@ -90,6 +94,15 @@ public class Ex8Revision extends PApplet {
     }
 
     class PCircles extends Circles {
+        int sizeDelta;
+        int moveDelta;
+
+        public PCircles(int diameter, int sizeDelta, int moveDelta) {
+            super(diameter);
+            this.sizeDelta = sizeDelta;
+            this.moveDelta = moveDelta;
+        }
+
         public void draw() {
             fill(255, 0, 255);
             for (Circle c : circles) {
@@ -98,21 +111,21 @@ public class Ex8Revision extends PApplet {
         }
 
         public void keyPressed() {
-            if ('+' == key) changeDiameter(CIRCLE_SIZE_DELTA);
-            if ('-' == key) changeDiameter(-CIRCLE_SIZE_DELTA);
+            if ('+' == key) changeDiameter(sizeDelta);
+            if ('-' == key) changeDiameter(-sizeDelta);
 
             switch (keyCode) {
                 case UP:
-                    move(0, -CIRCLE_MOVE);
+                    move(0, -moveDelta);
                     break;
                 case RIGHT:
-                    move(CIRCLE_MOVE, 0);
+                    move(moveDelta, 0);
                     break;
                 case DOWN:
-                    move(0, CIRCLE_MOVE);
+                    move(0, moveDelta);
                     break;
                 case LEFT:
-                    move(- CIRCLE_MOVE, 0);
+                    move(- moveDelta, 0);
             }
         }
 
