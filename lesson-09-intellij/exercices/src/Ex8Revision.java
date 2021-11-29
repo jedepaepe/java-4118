@@ -1,18 +1,27 @@
 import processing.core.PApplet;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class Ex8Revision extends PApplet {
-    final int SQUARE_COUNT = 6;
-    final int SQUARE_SIZE = 100;
-    final int CIRCLE_SIZE_DELTA = 10;
-    final int CIRCLE_MOVE = 5;
-    PCircles pCircles = new PCircles(30, CIRCLE_SIZE_DELTA, CIRCLE_MOVE);
-    PSquares pSquares = new PSquares(SQUARE_COUNT, SQUARE_SIZE);
+    AppParameters appParameters;
+    PCircles pCircles;
+    PSquares pSquares;
+
+    public Ex8Revision() {
+    }
+
+    public Ex8Revision initialize(String[] args) {
+        appParameters = new AppParametersHelper().build(args);
+        pCircles = new PCircles(appParameters.circleDiameter, appParameters.circleSizeDelta, appParameters.circleMove);
+        pSquares = new PSquares(appParameters.squareCount, appParameters.squareSize);
+        return this;
+    }
 
     @Override
     public void settings() {
-        size(SQUARE_COUNT * SQUARE_SIZE, SQUARE_COUNT * SQUARE_SIZE);
+        int size = appParameters.squareCount * appParameters.squareSize;
+        size(size, size);
     }
 
     @Override
@@ -26,10 +35,6 @@ public class Ex8Revision extends PApplet {
         background(0);
         pSquares.draw();
         pCircles.draw();
-    }
-
-    private int pixelsFromIndex(int index) {
-        return index * SQUARE_SIZE;
     }
 
     @Override
@@ -53,7 +58,7 @@ public class Ex8Revision extends PApplet {
     }
 
     public static void main(String[] args) {
-        PApplet.runSketch(new String[] { Ex8Revision.class.getName() }, new Ex8Revision());
+        PApplet.runSketch(new String[] { Ex8Revision.class.getName() }, new Ex8Revision().initialize(args));
     }
 
     class Circle {
@@ -135,24 +140,52 @@ public class Ex8Revision extends PApplet {
     }
 
     class PSquares {
-        int squareCount;
-        int squareSize;
+        int count;
+        int size;
 
-        public PSquares(int squareCount, int squareSize) {
-            this.squareCount = squareCount;
-            this.squareSize = squareSize;
+        public PSquares(int count, int size) {
+            this.count = count;
+            this.size = size;
         }
 
         public void draw() {
-            for (int i = 0; i < squareCount; ++i) {
+            for (int i = 0; i < count; ++i) {
                 int p = pixelsFromIndex(i);
                 if (i % 2 == 0) fill(255, 255, 0);
                 else fill(0, 255, 255);
-                square(p, p, squareSize);
+                square(p, p, size);
                 if (i % 2 == 0) fill(0, 255, 255);
                 else fill(255, 255, 0);
-                text("carré " + (i + 1), p + squareSize / 2, p + squareSize /2);
+                text("carré " + (i + 1), p + size / 2, p + size /2);
             }
+        }
+
+        private int pixelsFromIndex(int index) {
+            return index * size;
+        }
+    }
+
+    class AppParameters {
+        int squareCount = 6;
+        int squareSize = 100;
+        int circleDiameter = 30;
+        int circleSizeDelta = 10;
+        int circleMove = 5;
+    }
+
+    class AppParametersHelper {
+        public AppParameters build(String[] args) {
+            AppParameters appParameters = new AppParameters();
+            ArrayList<Integer> params = new ArrayList<Integer>();
+            for (String arg : args) {
+                params.add(Integer.getInteger(arg));
+            }
+            if (args.length >= 1) appParameters.squareCount = params.get(0);
+            if (args.length >= 2) appParameters.squareSize = params.get(1);
+            if (args.length >= 3) appParameters.circleDiameter = params.get(2);
+            if (args.length >= 4) appParameters.circleSizeDelta = params.get(3);
+            if (args.length >= 5) appParameters.circleMove = params.get(4);
+            return appParameters;
         }
     }
 }
